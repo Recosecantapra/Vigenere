@@ -1,8 +1,6 @@
 a, b = "0123456789abcdefghijklmnopqrstuvwxyzæøåABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ.,=:;-_'^¨*?+[]()}{&%¤$#£@ ", {}
 bLIST, nLIST, fLIST, gLIST = [], [], [], []
-
-besked = input("Skriv en besked: ")
-nøgle = input("Skriv en nøgle: ")
+dbLIST, dnLIST, dfLIST, dgLIST = [], [], [], []
 
 for i in a:
     b[i]=a.index(i)+1
@@ -19,6 +17,33 @@ def krypter(bes, nøg):
             if d == v:
                 gLIST.append(c)
 
-krypter(besked, nøgle)
-whopper = "".join(gLIST)
-print(whopper)
+def dekrypter(bes, nøg):
+    for l in bes:
+        dbLIST.append(b[l])
+    for w in nøg:
+        dnLIST.append(b[w])
+    for i in range(len(bes)):
+        dfLIST.append((dbLIST[i] - dnLIST[i]))
+    for v in dfLIST:
+        for c,d in b.items():
+            if d == v:
+                dgLIST.append(c)
+
+spørgsmål = input("Hvil du kryptere eller dekryptere? Skriv k eller d: ")
+
+if spørgsmål == "k":
+    besked = input("Skriv en besked: ")
+    nøgle = input("Skriv en nøgle: ")
+    krypter(besked, nøgle)
+    whopper = "".join(gLIST)
+    print(whopper)
+elif spørgsmål == "d":
+    kbesked = input("Skriv den krypterede besked: ")
+    knøgle = input("Skriv nøglen: ")
+    dekrypter(kbesked, knøgle)
+    dwhopper = "".join(dgLIST)
+    print(dwhopper)
+
+
+
+
