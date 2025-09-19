@@ -1,5 +1,5 @@
 a, b = "0123456789abcdefghijklmnopqrstuvwxyzæøåABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ.,=:;-_'^¨*?+[]()}{&%¤$#£@ ", {}
-bLIST, nLIST, fLIST = [], [], []
+bLIST, nLIST, fLIST, gLIST = [], [], [], []
 
 besked = input("Skriv en besked: ")
 nøgle = input("Skriv en nøgle: ")
@@ -14,7 +14,11 @@ def krypter(bes, nøg):
         nLIST.append(b[w])
     for i in range(len(bes)):
         fLIST.append((bLIST[i] + nLIST[i])%95)
-
+    for v in fLIST:
+        for c,d in b.items():
+            if d == v:
+                gLIST.append(c)
 
 krypter(besked, nøgle)
-print(fLIST)
+whopper = "".join(gLIST)
+print(whopper)
